@@ -20,7 +20,8 @@ func dialer(netw string, srcaddr, tcpaddr *net.TCPAddr, c chan dialresponse) {
 	//return c
 }
 
-// net.DialTCP but accept a timeout net.DialTimeout doesnt take laddr..
+// same net.DialTCP but accept a timeout
+// net.DialTimeout doesnt take laddr
 // net.DialTCP doesnt take a timeout
 func DialTCPTimeout(netw string, laddr, raddr *net.TCPAddr, timeout time.Duration) (*net.TCPConn, error) {
 	//Do this hanky panky cause there is no DialTCPTimeout in net
