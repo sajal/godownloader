@@ -148,7 +148,7 @@ func downloadr(fname string, url string, totalsize, defaultchunksize int64, inst
 		instance.Currentchunksize = defaultchunksize
 		instance.Que = make(chan Chunk, 2)
 		//Init the worker
-		go worker(instance.Name, godownloader.GetClient(instance.IP), instance.Que, out, fail)
+		go worker(instance.Name, godownloader.GetClient(instance.IP, time.Second*time.Duration(20)), instance.Que, out, fail)
 		//Allocate the first chunks
 		allocated = getallocation(totalsize, allocated, defaultchunksize, url, instance.Que)
 		instancemap[instance.Name] = instance

@@ -9,7 +9,7 @@ import (
 
 // Returns a http.Client bounded to the network interface that laddr belongs to
 // All requests going out use laddr as the source address
-func GetClient(laddr net.IP) *http.Client {
+func GetClient(laddr net.IP, timeout time.Duration) *http.Client {
 	tr := &http.Transport{
 		Dial: func(network string, addr string) (net.Conn, error) {
 			tcpaddr, err := net.ResolveTCPAddr(network, addr)
@@ -22,7 +22,7 @@ func GetClient(laddr net.IP) *http.Client {
 			//Dial tcp with custom source address ..
 			return DialTCPTimeout("tcp", srcaddr, tcpaddr, 20*time.Second)
 		},
-		ResponseHeaderTimeout: time.Second * time.Duration(20), //If headers not received in 20 secs then timeout
+		ResponseHeaderTimeout: timeout, //If headers not received in timeout then FAIL
 	}
 	client := &http.Client{Transport: tr}
 	return client
