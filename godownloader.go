@@ -6,10 +6,10 @@ package main
 */
 
 import (
-	"github.com/sajal/godownloader/net"
 	"crypto/md5"
 	"flag"
 	"fmt"
+	"github.com/sajal/godownloader/net"
 	"io"
 	"io/ioutil"
 	"log"
