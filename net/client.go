@@ -20,7 +20,7 @@ func GetClient(laddr net.IP, timeout time.Duration) *http.Client {
 			//Picking port number as 0 gets a free port. http://osdir.com/ml/go-language-discuss/2013-05/msg01285.html
 			srcaddr := &net.TCPAddr{IP: laddr, Port: 0}
 			//Dial tcp with custom source address ..
-			return DialTCPTimeout("tcp", srcaddr, tcpaddr, 20*time.Second)
+			return DialTCPTimeout("tcp", srcaddr, tcpaddr, timeout)
 		},
 		ResponseHeaderTimeout: timeout, //If headers not received in timeout then FAIL
 	}
