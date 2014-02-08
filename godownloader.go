@@ -6,7 +6,7 @@ package main
 */
 
 import (
-	"./net"
+	"github.com/sajal/godownloader/net"
 	"crypto/md5"
 	"flag"
 	"fmt"
